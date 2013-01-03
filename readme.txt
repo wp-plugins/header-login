@@ -26,7 +26,7 @@ If not, then nothing is done and the user remains a guest to the blog.
 Bug Fixes
  - Blank Admin Bar appearing when not logged in.
 
-= 2.4= 
+= 2.4 = 
 Bug Fixes
  - Some users not seeing the Admin Bar after logging in
 
