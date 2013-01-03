@@ -22,7 +22,7 @@ If not, then nothing is done and the user remains a guest to the blog.
 3. Set up and customize the plugin through the 'Settings' Menu
 
 == Changelog ==
-= 2.4= 
+= 2.4 = 
 Bug Fixes
  - Some users not seeing the Admin Bar after logging in
 
