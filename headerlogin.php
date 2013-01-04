@@ -2,7 +2,7 @@
 /**
  *
  * @package Header_Login
- * @version 2.3
+ * @version 2.6
  */
 /*
 Plugin Name: Header Login
@@ -10,7 +10,7 @@ Plugin URI: https://github.com/scweber/header-login
 Description: This plugin will automatically log a user into WordPress if they are logged into Access Manager.
 This allows for a user to log into Access Manager and then be automatically logged into Wordpress, without having to navigate to the Admin Console.
 Author: Scott Weber and Matthew Ehle
-Version: 2.3
+Version: 2.6
 Author URI: https://github.com/scweber
 */
 
@@ -265,9 +265,17 @@ function hl_plugin_menu() {//Set up the plugin menu
 		{add_submenu_page('options-general.php',__('Header Login Options','header-login'),__('Header Login','header-login'),'edit_plugins',basename(__FILE__),'hl_menu');}
 }
 
+function hl_add_to_all_blogs($userdata) {
+	global $wpdb;
+	
+	$blogList = $wpdb->get_results("SELECT blog_id FROM " . $wpdb->blogs);
+	foreach($blogList as $blog)
+		{add_user_to_blog($blog->blog_id, $userdata['ID'], $userdata['role']);}
+}
+
 //Create a new user with the Header Data
-function hl_create_new_user($user_id, $user_login, $email, $fname, $lname, $user_nicename, $user_displayname, $user_role, $setAsSubscriber) {
-	//error_log("Creating New User...");
+function hl_create_new_user($user_id, $user_login, $email, $fname, $lname, $user_nicename, $user_displayname, $user_role, $updateRole) {
+	error_log("Creating New User...");
 	//Populate the userdata array
 	$userdata = array(
 		'ID'		=> $user_id,
@@ -282,16 +290,20 @@ function hl_create_new_user($user_id, $user_login, $email, $fname, $lname, $user
 		{$userdata['user_nicename'] = $user_nicename;}
 	if($user_displayname != "")
 		{$userdata['display_name'] = $user_displayname;}
-	if($setAsSubscriber)
+	if($updateRole)
 		{$userdata['role'] = $user_role;}	
 
 	wp_insert_user($userdata);
+	
+	if(is_multisite())  //If multi-site add new user to each blog
+		{hl_add_to_all_blogs($userdata);}
+	
 	return $userdata;
 }//End hl_create_new_user
 
 //Update the current user with the Header Data
-function hl_update_existing_user($user_id, $user_login, $email, $fname, $lname, $user_nicename, $user_displayname, $user_role, $setAsSubscriber) {
-	//error_log("Updating Existing User...");
+function hl_update_existing_user($user_id, $user_login, $email, $fname, $lname, $user_nicename, $user_displayname, $user_role, $updateRole) {
+	error_log("Updating Existing User...");
 	//Populate the userdata array
 	$userdata = array(
 		'ID'		=> $user_id,
@@ -306,10 +318,10 @@ function hl_update_existing_user($user_id, $user_login, $email, $fname, $lname, 
 		{$userdata['user_nicename'] = $user_nicename;}
 	if($user_displayname != "")
 		{$userdata['display_name'] = $user_displayname;}
-	if($setAsSubscriber)
+	if($updateRole)
 		{$userdata['role'] = $user_role;}
 
-	wp_update_user($userdata);
+	wp_update_user($userdata);	
 	return $userdata;
 }//End hl_update_existing_user
 
@@ -335,6 +347,9 @@ function hl_user_login() {
 	if($current_user->user_login != $headers[$user_login_header])
 		{wp_logout();}
 
+	if(is_user_logged_in())
+		{show_admin_bar(true);}
+	
 	if(!is_user_logged_in() && (isset($headers[$user_login_header]) && ($headers[$user_login_header] != ""))) { //User logged into AM, but not WP
 		$errors = "";
 		//error_log($headers[$user_login_header] . " is logged into AM, but not WP.  Logging them into WP...");
