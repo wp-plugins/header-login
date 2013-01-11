@@ -18,6 +18,9 @@ If not, then nothing is done and the user remains a guest to the blog.
 
 If desired, a new user can be created on WordPress if authenticated through Access Management Tool.
 
+== Screenshots ==
+1. Settings Page
+
 == Installation ==
 1. Upload `header-login` directory to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
