@@ -39,66 +39,66 @@ If desired, a new user can be created on WordPress if authenticated through Acce
 == Changelog ==
 = 2.8.3 =
 **Enhancements**
-  - Keep settings on deactivation.  Settings are only removed upon uninstallation.
+  1. Keep settings on deactivation.  Settings are only removed upon uninstallation.
 
 = 2.8.2 = 
 **Bug Fixes**
-  - Minor fix to hide Role dropdown if Create New User is disabled
+  1. Minor fix to hide Role dropdown if Create New User is disabled
 
 = 2.8.1 =
 **Bug Fixes**
-  - User's role was being overwritten in a single site
+  1. User's role was being overwritten in a single site
 
 = 2.8.0 =
 **Bug Fixes**
-  - User's current role on multisite blog was being overridden by user's role on main site.  This did not allow for a user to have varying roles on a multisite install
+  1. User's current role on multisite blog was being overridden by user's role on main site.  This did not allow for a user to have varying roles on a multisite install
 **Enhancements**
-  - New multisite feature: Allow administrators to choose which subsites will automatically create new users and with what role
+  1. New multisite feature: Allow administrators to choose which subsites will automatically create new users and with what role
 
 = 2.7.3 =
 **Bug Fixes**
-  - Bug was overwriting the User-Defined Display Name and Nicename
+  1. Bug was overwriting the User-Defined Display Name and Nicename
 
 = 2.7.2 = 
 **Bug Fixes**
-  - Another user role issue
+  1. Another user role issue
 
 = 2.7.1 =
 **Bug Fixes**
-  - Issue where the plugin was setting the user's role to null
+  1. Issue where the plugin was setting the user's role to null
 
 = 2.7 =
 **Bug Fixes**
-  - Issue of not adding new users to all blogs when user already on Network
+  1. Issue of not adding new users to all blogs when user already on Network
 
 = 2.6 =
 **Enhancements**
-  - If option chosen to add new users and a multi-site, then users are added to each and every blog in network
+  1. If option chosen to add new users and a multi-site, then users are added to each and every blog in network
 
 = 2.5 =
 **Bug Fixes**
-  - Blank Admin Bar appearing when not logged in
+  1. Blank Admin Bar appearing when not logged in
 
 = 2.4 = 
 **Bug Fixes**
-  - Some users not seeing the Admin Bar after logging in
+  1. Some users not seeing the Admin Bar after logging in
 
 = 2.3 =
 **Security Fixes**
 
 = 2.2 =
 **Bug Fixes**
-  - Do not update user info if header is blank
+  1. Do not update user info if header is blank
 
 = 2.1 =
 **Enhancements**
-  - Multi-Site Support
+  1. Multi-Site Support
 
 = 2.0 =
 **MAJOR UPDATE!**
-  - New Admin User Interface.
-  - Ability to set custom headers to use for creating and authenticating users
-  - Can choose to automatically create new users
+  1. New Admin User Interface.
+  2. Ability to set custom headers to use for creating and authenticating users
+  3. Can choose to automatically create new users
 
 = 1.0 =
 This is the first release
