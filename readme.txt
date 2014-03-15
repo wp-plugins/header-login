@@ -101,4 +101,4 @@ If desired, a new user can be created on WordPress if authenticated through Acce
   3. Can choose to automatically create new users
 
 = 1.0 =
-This is the first release
+* This is the first release
