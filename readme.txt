@@ -39,7 +39,7 @@ If desired, a new user can be created on WordPress if authenticated through Acce
 == Changelog ==
 = 2.8.3 =
 **Enhancements**
-* Keep settings on deactivation.  Settings are only removed upon uninstallation.
+- Keep settings on deactivation.  Settings are only removed upon uninstallation.
 
 = 2.8.2 = 
 **Bug Fixes**
@@ -84,21 +84,21 @@ If desired, a new user can be created on WordPress if authenticated through Acce
 * Some users not seeing the Admin Bar after logging in
 
 = 2.3 =
-Security Fixes
+**Security Fixes**
 
 = 2.2 =
 **Bug Fixes**
-* Do not update user info if header is blank
+- Do not update user info if header is blank
 
 = 2.1 =
 **Enhancements**
-* Multi-Site Support
+- Multi-Site Support
 
 = 2.0 =
 **MAJOR UPDATE!**
-* New Admin User Interface.
-* Ability to set custom headers to use for creating and authenticating users
-* Can choose to automatically create new users
+- New Admin User Interface.
+- Ability to set custom headers to use for creating and authenticating users
+- Can choose to automatically create new users
 
 = 1.0 =
 This is the first release
