@@ -218,12 +218,12 @@ function hl_menu() {
                         </tr>
                             <?php foreach($blogList as $blog) : ?>
                                 <tr valign="top">
-                                    <td class="blog-path"><label for="create-new-user<?php echo $blog->blog_id; ?>"><?php echo $blog->path; ?></label></td>
-                                    <td class="blog-create-new-user">
+                                    <td class="ms-blog-path"><label for="create-new-user<?php echo $blog->blog_id; ?>"><?php echo $blog->path; ?></label></td>
+                                    <td class="ms-blog-create-new-user">
                                         <input type="radio" name="create-new-user<?php echo $blog->blog_id; ?>" id="create-new-user-true" value="1" onclick="toggleNewUserRole(this.value, <?php echo $blog->blog_id; ?>)" <?php echo $create_new_user_true[$blog->blog_id] ?> /> <label for="create-new-user<?php $blog->blog_id; ?>-true"><?php _e('Yes','header-login'); ?></label>
                                         <input type="radio" name="create-new-user<?php echo $blog->blog_id; ?>" id="create-new-user-false" value="0" onclick="toggleNewUserRole(this.value, <?php echo $blog->blog_id; ?>)" <?php echo $create_new_user_false[$blog->blog_id] ?> /> <label for="create-new-user<?php $blog->blog_id; ?>-false"><?php _e('No','header-login'); ?></label>
                                     </td>
-                                    <td class="blog-new-user-role">
+                                    <td class="ms-blog-new-user-role">
                                         <select name="new-user-role<?php echo $blog->blog_id; ?>" id="new-user-role<?php echo $blog->blog_id; ?>" style="display:<?php echo $create_new_user[$blog->blog_id] == 1 ? block : none; ?>;">
                                             <option <?php if($new_user_role[$blog->blog_id] == 'administrator') {echo 'selected="selected"';} ?> value="administrator"><?php _e('Administrator','header-login'); ?></option>
                                             <option <?php if($new_user_role[$blog->blog_id] == 'editor') {echo 'selected="selected"';} ?> value="editor"><?php _e('Editor','header-login'); ?></option>
@@ -236,12 +236,12 @@ function hl_menu() {
                             <?php endforeach; ?>
                         <?php else : ?>
                             <tr valign="top">
-                                <th scope="row"><label for="create-new-user"><?php _e('Automatically Create New Users','header-login'); ?></label></th>
-                                <td>
+                                <th scope="row" class="ss-blog-path"><label for="create-new-user"><?php _e('Automatically Create New Users','header-login'); ?></label></th>
+                                <td class="ss-blog-create-new-user">
                                     <input type="radio" name="create-new-user" id="create-new-user-true" value="1" onclick="toggleNewUserRole(this.value, '')" <?php echo $create_new_user_true ?> /> <label for="create-new-user-true"><?php _e('Yes','header-login'); ?></label>
                                     <input type="radio" name="create-new-user" id="create-new-user-false" value="0" onclick="toggleNewUserRole(this.value, '')" <?php echo $create_new_user_false ?> /> <label for="create-new-user-false"><?php _e('No','header-login'); ?></label>
                                 </td>
-                                <td>
+                                <td class="ss-blog-new-user-role">
                                     <select name="new-user-role" id="new-user-role" style="display:<?php echo $create_new_user == 1 ? block : none; ?>;">
                                         <option <?php if($new_user_role == 'administrator') {echo 'selected="selected"';} ?> value="administrator"><?php _e('Administrator','header-login'); ?></option>
                                         <option <?php if($new_user_role == 'editor') {echo 'selected="selected"';} ?> value="editor"><?php _e('Editor','header-login'); ?></option>
