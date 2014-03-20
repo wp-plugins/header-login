@@ -30,7 +30,7 @@ If desired, a new user can be created on WordPress automatically if authenticate
 
 = Manual =
 1. Go to https://wordpress.org/plugins/header-login
-2. Download latest version of Simple Subscribe
+2. Download latest version of Header Login
 3. Unzip file into WordPress plugins directory
 4. Activate Plugin (Network Activate on Multisite)
 5. Setup and customize the plugin through the "Settings" Menu (Network Settings Menu on Multisite)
