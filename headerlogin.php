@@ -2,7 +2,7 @@
 /**
  *
  * @package Header_Login
- * @version 2.8.3
+ * @version 2.8.4
  */
 /*
 Plugin Name: Header Login
@@ -10,7 +10,7 @@ Plugin URI: https://github.com/scweber/header-login
 Description: This plugin will automatically log a user into WordPress if they are logged into Access Manager.
 This allows for a user to log into Access Manager and then be automatically logged into Wordpress, without having to navigate to the Admin Console.
 Author: Scott Weber and Matthew Ehle
-Version: 2.8.3
+Version: 2.8.4
 Author URI: https://github.com/scweber
 */
 
@@ -218,7 +218,7 @@ function hl_menu() {
                         </tr>
                             <?php foreach($blogList as $blog) : ?>
                                 <tr valign="top">
-                                    <td class="ms-blog-path"><label for="create-new-user<?php echo $blog->blog_id; ?>"><?php echo $blog->path; ?></label></td>
+                                    <td class="ms-blog-path"><label for="create-new-user<?php echo $blog->blog_id; ?>"><?php echo $blog->domain; echo $blog->path; ?></label></td>
                                     <td class="ms-blog-create-new-user">
                                         <input type="radio" name="create-new-user<?php echo $blog->blog_id; ?>" id="create-new-user-true" value="1" onclick="toggleNewUserRole(this.value, <?php echo $blog->blog_id; ?>)" <?php echo $create_new_user_true[$blog->blog_id] ?> /> <label for="create-new-user<?php $blog->blog_id; ?>-true"><?php _e('Yes','header-login'); ?></label>
                                         <input type="radio" name="create-new-user<?php echo $blog->blog_id; ?>" id="create-new-user-false" value="0" onclick="toggleNewUserRole(this.value, <?php echo $blog->blog_id; ?>)" <?php echo $create_new_user_false[$blog->blog_id] ?> /> <label for="create-new-user<?php $blog->blog_id; ?>-false"><?php _e('No','header-login'); ?></label>
