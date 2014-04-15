@@ -427,7 +427,6 @@ function hl_user_login() {
                 if(!is_multisite()) {
                     hl_update_user($user_id, $user_login, $user_email, $user_firstname, $user_lastname, $user_nicename, $user_displayname, $new_user_role, 0);
                 } else {
-                    error_log('Multisite');
                     foreach($blogList as $blog) {
                        if(!is_user_member_of_blog($user_id, $blog->blog_id) && $create_new_user[$blog->blog_id] == 1) {
                            hl_create_user($user_id, $user_login, $user_email, $user_firstname, $user_lastname, $user_nicename, $user_displayname, $new_user_role[$blog->blog_id], $blog->blog_id);
