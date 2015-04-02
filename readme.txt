@@ -2,8 +2,8 @@
 Contributors: scweber, mehle
 Tags: login, header, Access Manager, Single Sign-On, SSO
 Requires at least: 3.0
-Tested up to: 3.9
-Stable tag: 2.8.6
+Tested up to: 4.1.1
+Stable tag: 2.8.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,10 @@ If desired, a new user can be created on WordPress automatically if authenticate
 5. Setup and customize the plugin through the "Settings" Menu (Network Settings Menu on Multisite)
 
 == Changelog ==
+= 2.8.7 =
+* **Bug Fixes**
+  * Usernames with non-lowercase characters were resulting in a redirect loop when trying to access the wp-admin dashboard.
+
 = 2.8.6 =
 * **Bug Fixes**
   * Another redirect loop bug was found.

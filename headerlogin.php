@@ -2,7 +2,7 @@
 /**
  *
  * @package Header_Login
- * @version 2.8.6
+ * @version 2.8.7
  */
 /*
 Plugin Name: Header Login
@@ -10,7 +10,7 @@ Plugin URI: https://github.com/scweber/header-login
 Description: This plugin will automatically log a user into WordPress if they are logged into Access Manager.
 This allows for a user to log into Access Manager and then be automatically logged into Wordpress, without having to navigate to the Admin Console.
 Author: Scott Weber and Matthew Ehle
-Version: 2.8.6
+Version: 2.8.7
 Author URI: https://github.com/scweber
 */
 
@@ -380,7 +380,6 @@ function hl_authenticate_username($user, $username, $pass) {
 
 function hl_user_login() {
     $headers = apache_request_headers(); //Get the headers present
-    
     if(is_multisite()) {
         global $wpdb;
         $blogList = $wpdb->get_results("SELECT blog_id FROM " . $wpdb->blogs);
@@ -404,14 +403,14 @@ function hl_user_login() {
     }
 
     $current_user = wp_get_current_user();
-    if($current_user->user_login != $headers[$user_login_header]) {
+    if(strtolower($current_user->user_login) !== strtolower($headers[$user_login_header])) {
         wp_logout();
     }
 
     if(!is_user_logged_in() && (isset($headers[$user_login_header]) && ($headers[$user_login_header] != ""))) { //User logged into AM, but not WP
         $errors = "";
 
-        $user_login = $headers[$user_login_header];
+        $user_login = strtolower($headers[$user_login_header]);
         $user_email = $headers[$user_email_header];
         $user_firstname = $headers[$user_firstname_header];
         $user_lastname = $headers[$user_lastname_header];
@@ -427,6 +426,7 @@ function hl_user_login() {
                 if(!is_multisite()) {
                     hl_update_user($user_id, $user_login, $user_email, $user_firstname, $user_lastname, $user_nicename, $user_displayname, $new_user_role, 0);
                 } else {
+                    error_log('Multisite');
                     foreach($blogList as $blog) {
                        if(!is_user_member_of_blog($user_id, $blog->blog_id) && $create_new_user[$blog->blog_id] == 1) {
                            hl_create_user($user_id, $user_login, $user_email, $user_firstname, $user_lastname, $user_nicename, $user_displayname, $new_user_role[$blog->blog_id], $blog->blog_id);
